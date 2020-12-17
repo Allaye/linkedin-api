@@ -1250,3 +1250,19 @@ class Linkedin(object):
             limit, offset, exclude_promoted_posts
         )
         return get_list_posts_sorted_without_promoted(l_urns, l_posts)
+
+    
+    def add_connection(self, profile_urn_id=None, message=None):
+        data = '{"trackingId":"yvzykVorToqcOuvtxjSFMg==","invitations":[],"excludeInvitations":[],"invitee":{' \
+               '"com.linkedin.voyager.growth.invitation.InviteeProfile":{"profileId":' + \
+               '"' + profile_urn_id + '"' + '}}}'
+
+        if message is not None:
+            data = '{"trackingId":"yvzykVorToqcOuvtxjSFMg==","invitations":[],"excludeInvitations":[],"invitee":{' \
+                   '"com.linkedin.voyager.growth.invitation.InviteeProfile":{"profileId":' + \
+                   '"' + profile_urn_id + '"' + '}},"message":' '"' + message + '"' + '}'
+
+        res = self._post('/growth/normInvitations', data=data,
+                         headers={"accept": "application/vnd.linkedin.normalized+json+2.1"}, )
+
+        return res.status_code
