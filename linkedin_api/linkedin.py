@@ -1253,11 +1253,13 @@ class Linkedin(object):
 
     
     def add_connection(self, profile_urn_id=None, message=None):
+
         data = '{"trackingId":"yvzykVorToqcOuvtxjSFMg==","invitations":[],"excludeInvitations":[],"invitee":{' \
                '"com.linkedin.voyager.growth.invitation.InviteeProfile":{"profileId":' + \
                '"' + profile_urn_id + '"' + '}}}'
 
         if message is not None:
+            
             data = '{"trackingId":"yvzykVorToqcOuvtxjSFMg==","invitations":[],"excludeInvitations":[],"invitee":{' \
                    '"com.linkedin.voyager.growth.invitation.InviteeProfile":{"profileId":' + \
                    '"' + profile_urn_id + '"' + '}},"message":' '"' + message + '"' + '}'
